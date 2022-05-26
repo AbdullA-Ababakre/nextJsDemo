@@ -29,10 +29,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/new-meetup": [
+    "/signin": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/new-meetup.js"
+      "static/chunks/pages/signin.js"
     ]
   },
   "ampFirstPages": []
