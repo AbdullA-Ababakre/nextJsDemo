@@ -40,12 +40,14 @@ export default NextAuth({
 })
 
 
-const signInUser = async ({ }) => {
+const signInUser = async ({ password, user }) => {
 
     if (!user.password) {
         throw new Error("Please enter password");
     }
+
     const isMatch = await bcrypt.compare(password, user.password);
+
     if (!isMatch) {
         throw new Error("Password is incorrect");
     }

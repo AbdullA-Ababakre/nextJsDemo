@@ -9,28 +9,25 @@ export default function SignIn({ csrfToken, providers }) {
     const [message, setMessage] = useState(null);
 
     const signInUser = async (e) => {
-        console.log("email", email);
-        console.log("password", password);
         e.preventDefault();
         let options = { redirect: false, email, password }
         const res = await signIn('credentials', options);
-        console.log("ress----", res);
-        // setMessage(null);
-        // if (res?.error) {
-        //     setMessage(res.error);
-        // }
 
-        // return router.push('/');
+        setMessage(null);
+        if (res?.error) {
+            setMessage(res.error);
+        }
+
+        return router.push('/');
     }
 
 
     const signUpUser = async (e) => {
         e.preventDefault();
-        const res = await fetch('./api/register', {
+        const res = await fetch('/api/register', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({ email, password }),
         })
@@ -42,7 +39,7 @@ export default function SignIn({ csrfToken, providers }) {
         if (data.message == "Registered successfully") {
             let options = { redirect: false, email, password }
             const res = await signIn("credentials", options)
-            // return router.push("/");
+            return router.push("/");
         }
     }
 

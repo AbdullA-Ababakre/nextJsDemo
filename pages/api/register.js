@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     // now we set user password to hashed password
     const hashpass = await bcrypt.hash(body.password, salt);
     const user = new Users({ email: body.email, password: hashpass });
-    user.password = await bcrypt.hash(user.password, salt);
+    // user.password = await bcrypt.hash(user.password, salt);
     await user.save();
     res.status(200).json({ message: 'Registered successfully' });
 
